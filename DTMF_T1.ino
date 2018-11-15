@@ -30,12 +30,18 @@
  * much of the original code as possible.  Program uses 8 inputs for hex 
  * keypad input and 1 PWM output.
  * 
- * INPUTS--   OUTPUT--
- * COL  ROW   Pin 9 (PB1)
- * PC0  PD4
- * PC1  PD5
- * PC2  PD6
- * PC3  PD7
+ * * * * * * D T M F   K E Y P A D * * * * *
+ *   1 ---- 2 ---- 3 ---- A --PD4 (D4) 697Hz
+ *   |      |      |      | 
+ *   4 ---- 5 ---- 6 ---- B --PD5 (D5) 770Hz
+ *   |      |      |      | 
+ *   7 ---- 8 ---- 9 ---- C --PD6 (D6) 852Hz
+ *   |      |      |      | 
+ *   * ---- 0 ---- # ---- D --PD7 (D7) 941Hz 
+ *   |      |      |      |   
+ *  PC0    PC1    PC2    PC3
+ *  (A0)   (A1)   (A2)   (A3)
+ * 1209Hz 1336Hz 1477Hz 1633Hz
  * 
  * Program Space:   922 bytes
  * Global Variables: 23 bytes
