@@ -35,7 +35,7 @@
  * PC2  PD6
  * PC3  PD7
  * 
- * Program Space: 922 bytes
+ * Program Space:   922 bytes
  * Global Variables: 23 bytes
  ******************************************************************************/
 
