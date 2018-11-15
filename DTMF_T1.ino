@@ -24,9 +24,11 @@
  * DESCRIPTION
  * This is a port of the original application note issued by Atmel in 2000
  * for the application of generating DTMF tones with the AVR family of 
- * Microcontrollers.  Code as-is was incompatible with Arduino and the 
- * ATmegal328 microcontroller.  Program uses 8 inputs for hex keypad input
- * and 1 PWM output.
+ * Microcontrollers.  Original code was incompatible with Arduino and the 
+ * ATmega328 microcontroller.  This code has been modified to be fully   
+ * compatible with the Arduino UNO and NANO (16MHz) while maintaining as 
+ * much of the original code as possible.  Program uses 8 inputs for hex 
+ * keypad input and 1 PWM output.
  * 
  * INPUTS--   OUTPUT--
  * COL  ROW   Pin 9 (PB1)
