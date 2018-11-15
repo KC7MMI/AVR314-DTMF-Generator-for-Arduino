@@ -4,8 +4,7 @@
 //* Number               : AVR314
 //* File Name            : "dtmf.c"
 //* Title                : DTMF Generator
-//* Date                 : 00.06.27
-//* Version              : 1.0
+//* Original Date        : 00.06.27
 //* Target MCU           : Any AVR with SRAM, 8 I/O pins and PWM 
 //*
 //* DESCRIPTION
@@ -35,6 +34,9 @@
  * PC1  PD5
  * PC2  PD6
  * PC3  PD7
+ * 
+ * Program Space: 922 bytes
+ * Global Variables: 23 bytes
  ******************************************************************************/
 
 #define  Xtal       16000000         // system clock frequency
@@ -47,7 +49,7 @@
 // Samples table : one period sampled on 128 samples and
 // quantized on 7 bit
 //**************************************************************************
-const unsigned char auc_SinParam [128] = 
+const unsigned char auc_SinParam [128] PROGMEM =  //stores array in program space which saves 128 bytes of SRAM
 {
   64,67,70,73,76,79,82,85,88,91,94,96,99,102,104,106,109,111,113,115,117,118,120,121,123,124,125,126,126,127,127,127,127,127,127,127,126,
   126,125,124,123,121,120,118,117,115,113,111,109,106,104,102,99,96,94,91,88,85,82,79,76,73,70,67,64,60,57,54,51,48,45,42,39,36,33,31,28,
@@ -97,7 +99,7 @@ ISR(TIMER1_OVF_vect)
   i_TmpSinValA  =  (char)(((i_CurSinValA+4) >> 3)&(0x007F)); 
   i_TmpSinValB  =  (char)(((i_CurSinValB+4) >> 3)&(0x007F));
   // calculate PWM value and assign to compare register: high frequency value + 3/4 low frequency value
-  OCR1A = (auc_SinParam[i_TmpSinValA] + (auc_SinParam[i_TmpSinValB]-(auc_SinParam[i_TmpSinValB]>>2)));
+  OCR1A = (pgm_read_byte(&(auc_SinParam[i_TmpSinValA])) + (pgm_read_byte(&(auc_SinParam[i_TmpSinValB]))-(pgm_read_byte(&(auc_SinParam[i_TmpSinValB]))>>2)));
 }
 
 //**************************************************************************
